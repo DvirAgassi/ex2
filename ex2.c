@@ -26,7 +26,8 @@ int main() {
 			* \___/
 			*/
 			case 1:
-				char eyes, nose, mouth, space = ' ';
+				char eyes, nose, mouth;
+				char space = ' ';
 				int face_size;
 				printf("Enter symbols for the eyes, nose, and mouth:\n");
 				scanf(" %c %c %c", &eyes, &nose, &mouth);
