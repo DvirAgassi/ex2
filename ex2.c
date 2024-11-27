@@ -171,7 +171,7 @@ int main() {
 			Please notice: the number has to be bigger than 0.
 			*/
 			case 5:
-				number;
+			    number;
 				printf("Enter a number:\n");
 				scanf("%d", &number);				
 				while(number <= 0) { // check if the num the user gave is ok
@@ -179,24 +179,57 @@ int main() {
 					scanf("%d", &number);		
 				}
 				for (int i = 1; i <= number; i++) {
-					int new_num = i;
-					while (sum != 1) {
-						sum = 0;
-						while (new_num > 0) {							
-							int last_digit = new_num % 10;
-							sum += last_digit * last_digit;
-							new_num /= 10;
+					int new_num = i; // copy so you can do things on that
+					int slow = i, fast = i; // Floyd’s Cycle Detection Algorithm - this is how I can check if I am in a loop
+					do {
+						int slow_square = 0; // make slow square the sum of square digits of num
+						while (slow > 0) {
+						    int last_digit = slow % 10;
+						    slow_square += last_digit * last_digit;
+						    slow /= 10;
 						}
+						slow = slow_square; // slow is now the square num
+				    
+						int fast_square = 0;
+						while (fast > 0) {
+						    int last_digit = fast % 10;
+						    fast_square += last_digit * last_digit;
+						    fast /= 10;
+						}
+						fast = fast_square; // fast is now the square num
+						
+						fast_square = 0;
+						while (fast > 0) {
+						    int last_digit = fast % 10;
+						    fast_square += last_digit * last_digit;
+						    fast /= 10;
+						}
+						fast = fast_square; /* do it again for the second number so in the end you'll have
+						a dif between them and see when you are in a loop*/
+				    
+					} while (slow != fast);
+					
+					if (slow == 1) { // it means they got to 1 which is what we wanted
+						printf("%d ", i);
 					}
 				}
+				printf("\n");
 				break;
 			case 6:
-				int smile, cheer, festival;
+				char smile, cheer;
+			    	int festival;
 				printf("Enter a smile and cheer number:\n");
-				int input = scanf("%d%d", &smile, &cheer);				
-				while(smile <= 0 || cheer <= 0) { // check if the input the user gave is ok
+				while (1) {
+				    while(getchar() != '\n'); // I found it on the internet, without it it made an infinite loop
+				    int input = scanf("smile: %c, cheer: %c", &smile, &cheer);
+			    
+				    // check if the input is ok - I found this on the internet I didnt think about it myself (about the input == 2, the rest in the if statment I did)
+				    if (!(input == 2 && (smile > '0' && smile <= '9') && (cheer > '0' && cheer <= '9') && smile != cheer)) {
+					// wrong input
 					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
-					scanf("%d%d", &smile, &cheer);		
+					continue;
+				    }
+				    break;
 				}
 				printf("Enter maximum number for the festival:\n");
 				scanf("%d", &festival);				
@@ -204,16 +237,21 @@ int main() {
 					printf("Only positive maximum number is allowed, please try again:\n");
 					scanf("%d", &festival);		
 				}
-				for (int i = 0; i <= festival; i++) {
-					if (i % smile == 0 && i % cheer == 0) {
+				
+				char ascii_zero = '0'; // to make it int and not char
+				int i_smile = smile - ascii_zero; // convert it by the ascii table
+				int i_cheer = cheer - ascii_zero; // convert it by the ascii table
+				
+				for (int i = 1; i <= festival; i++) {
+					if (i % i_smile == 0 && i % i_cheer == 0) {
 						printf("Festival!\n");
 						continue;
 					}
-					if (i % smile == 0) {
+					if (i % i_smile  == 0) {
 						printf("Smile!\n");
 						continue;
 					}
-					if (i % cheer == 0) {
+					if (i % i_cheer  == 0) {
 						printf("Cheer!\n");
 						continue;
 					}
