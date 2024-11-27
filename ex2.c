@@ -10,7 +10,7 @@ int main() {
 	int is_true = 1;
 	while(is_true) { // while true - do it
 		// print the menu
-		printf("Choose an Option:\n\t1. Happy Face\n\t2. Balanced Number\
+		printf("Choose an option:\n\t1. Happy Face\n\t2. Balanced Number\
 			\n\t3. Generous Number\n\t4. Circle Of Joy\n\t5. Happy Numbers\
 			\n\t6. Festival Of Laughter\n\t7. Exit\n");
 		// get user choice
@@ -178,6 +178,7 @@ int main() {
 					printf("Only positive number is allowed, please try again:\n");
 					scanf("%d", &number);		
 				}
+				printf("Between 1 and %d only these numbers bring happiness: ", number);
 				for (int i = 1; i <= number; i++) {
 					int slow = i, fast = i; // Floyd’s Cycle Detection Algorithm - this is how I can check if I am in a loop
 					do {
