@@ -26,6 +26,7 @@ int main() {
 			* \___/
 			*/
 			case 1:
+				;
 				char eyes, nose, mouth;
 				char space = ' ';
 				int face_size;
