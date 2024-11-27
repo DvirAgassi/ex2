@@ -145,14 +145,14 @@ int main() {
 						break;
 					}
 					// if you checked all the nums and got till here the num is prime
-					if (i == number) {
+					if (i + 1 == number) {
 						int reverse_num = 0;
 						while (number > 0) {
-							reverse_num *= 10 + (number % 10);
+							reverse_num = reverse_num * 10 + (number % 10);
 							number /= 10;
 						}
-						for (int i = 1; i < reverse_num; i++) { // check if the reverse_num is prime
-							if (number % i == 0) {	
+						for (int i = 2; i < reverse_num; i++) { // check if the reverse_num is prime
+							if (reverse_num % i == 0) {	
 								is_prime = 0;
 								break;
 							}
