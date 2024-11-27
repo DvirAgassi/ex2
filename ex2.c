@@ -61,6 +61,7 @@ int main() {
 			Please notice: the number has to be bigger than 0.
 			*/
 			case 2:
+				;
 				int number;
 				printf("Enter a number:\n");
 				scanf("%d", &number);				
@@ -218,6 +219,7 @@ int main() {
 				printf("\n");
 				break;
 			case 6:
+				;
 				char smile, cheer;
 			    	int festival;
 				printf("Enter a smile and cheer number:\n");
