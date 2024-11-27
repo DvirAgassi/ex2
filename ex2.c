@@ -107,7 +107,6 @@ int main() {
 			Please notice: the number has to be bigger than 0.
 			*/
 			case 3:
-				number;
 				printf("Enter a number:\n");
 				scanf("%d", &number);				
 				while(number <= 0) { // check if the num the user gave is ok
@@ -133,7 +132,6 @@ int main() {
 			Please notice: the number has to be bigger than 0.
 			*/
 			case 4:
-				number;
 				printf("Enter a number:\n");
 				scanf("%d", &number);				
 				while(number <= 0) { // check if the num the user gave is ok
@@ -174,7 +172,6 @@ int main() {
 			Please notice: the number has to be bigger than 0.
 			*/
 			case 5:
-			    number;
 				printf("Enter a number:\n");
 				scanf("%d", &number);				
 				while(number <= 0) { // check if the num the user gave is ok
@@ -182,7 +179,6 @@ int main() {
 					scanf("%d", &number);		
 				}
 				for (int i = 1; i <= number; i++) {
-					int new_num = i; // copy so you can do things on that
 					int slow = i, fast = i; // Floyd’s Cycle Detection Algorithm - this is how I can check if I am in a loop
 					do {
 						int slow_square = 0; // make slow square the sum of square digits of num
